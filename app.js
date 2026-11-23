@@ -3,7 +3,7 @@ dotenv.config({ path: '.env' });
 
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 const { GigaChat } = require('gigachat');
 const https = require('node:https');
@@ -24,7 +24,7 @@ const giga = new GigaChat({
 });
 
 app.get('/', (req, res) => {
-  res.send('Сервер работает на порту 5000');
+  res.send(`Сервер работает на порту ${PORT}`);
 });
 
 app.use((req, res, next) => {
@@ -48,7 +48,7 @@ app.get("/api/generate-headlines", async (req, res) => {
 
     try {
         const searchValue = req.query.searchValue;
-        const prompt = `Придумай 10 креативных заголовков для статьи на тему: "${searchValue}". Каждый заголовок - не более 10 слов, цепляющий и вовлекающий. Верни результат в формате JSON, ключами которого являются числа от нуля`;
+        const prompt = `Придумай 10 креативных заголовков для статьи на тему: "${searchValue}". Каждый заголовок - не более 10 слов, цепляющий и вовлекающий. Верни результат в формате JSON, ключами которого являются числа от единицы`;
 
         const response = await giga.chat({
             messages: [
