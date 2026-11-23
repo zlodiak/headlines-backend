@@ -70,7 +70,7 @@ app.get("/api/generate-headlines", async (req, res) => {
     } catch (error) {
         console.error('Ошибка GigaChat API:', error);
         res.status(500).type('json').send({ 
-            data: [],
+            data: null,
             error: 'Не удалось получить ответ от нейросети'
         });           
     }
