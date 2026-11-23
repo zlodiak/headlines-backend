@@ -23,7 +23,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/api/generate-headlines", (req, res) => {
+app.get("/api/generate-headlines", (req, res) => {
+    console.log('получен параметр:', req.query.searchValue);
+
     const headlines = {
         "qwqwqw": "wewewewe",
         "azazazaaz": "xsxsxsxsxs",
